@@ -25,8 +25,8 @@
 			"scriptLines": [
 				"parameters{",
 				"     FileSystemParam as string ('storage-sandbox'),",
-				"     FolderPathParam as string ('landing/Customer'),",
-				"     FileNameParam as string ('Customer*.parquet')",
+				"     FolderPathParam as string ('landing/CustomerAddress'),",
+				"     FileNameParam as string ('CustomerAddress*.parquet')",
 				"}",
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",

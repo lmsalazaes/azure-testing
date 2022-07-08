@@ -55,7 +55,7 @@
 											"type": "Expression"
 										},
 										"TableNameSink": {
-											"value": "'@{pipeline().parameters.TableNameSink}'",
+											"value": "'@{item()['TABLE_NAME']}'",
 											"type": "Expression"
 										}
 									}
@@ -108,14 +108,6 @@
 			"FileSystemSource": {
 				"type": "string",
 				"defaultValue": "storage-sandbox"
-			},
-			"FolderPathSource": {
-				"type": "string",
-				"defaultValue": "landing/CustomerAddress"
-			},
-			"FileNameSource": {
-				"type": "string",
-				"defaultValue": "CustomerAddress*.parquet"
 			},
 			"SchemaNameSink": {
 				"type": "string",

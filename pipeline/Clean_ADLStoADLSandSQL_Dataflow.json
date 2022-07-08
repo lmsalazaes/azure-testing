@@ -43,7 +43,7 @@
 											"type": "Expression"
 										},
 										"FolderPathParam": {
-											"value": "'@{pipeline().parameters.FolderPathSource}'",
+											"value": "'landing/@{item()['TABLE_NAME']}'",
 											"type": "Expression"
 										},
 										"FileNameParam": {

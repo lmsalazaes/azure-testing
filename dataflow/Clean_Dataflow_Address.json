@@ -29,10 +29,10 @@
 			"scriptLines": [
 				"parameters{",
 				"     FileSystemParam as string ('storage-sandbox'),",
-				"     FolderPathParam as string ('landing/vProductModelCatalogDescription'),",
-				"     FileNameParam as string ('vProductModelCatalogDescription*.parquet'),",
+				"     FolderPathParam as string ('landing/Address'),",
+				"     FileNameParam as string ('Address*.parquet'),",
 				"     SchemaName as string ('CleanData'),",
-				"     TableName as string ('vProductModelCatalogDescription')",
+				"     TableName as string ('Address')",
 				"}",
 				"source(output(",
 				"          SalesOrderID as integer,",

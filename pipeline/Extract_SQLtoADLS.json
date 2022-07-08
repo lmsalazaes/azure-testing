@@ -107,7 +107,7 @@
 							"typeProperties": {
 								"variableName": "testvar",
 								"value": {
-									"value": "@item()['value']",
+									"value": "@item()['TABLE_NAME']",
 									"type": "Expression"
 								}
 							}

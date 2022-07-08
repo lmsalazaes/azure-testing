@@ -81,7 +81,7 @@
 									"parameters": {
 										"FileSystem": "storage-sandbox",
 										"FolderPath": {
-											"value": "landing/@{item()}",
+											"value": "landing/@{item()['TABLE_NAME']}",
 											"type": "Expression"
 										},
 										"FileName": {

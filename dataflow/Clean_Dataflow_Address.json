@@ -55,7 +55,7 @@
 				"          each(match(name=='Weight'||name=='SubTotal'||name=='TaxAmt'||name=='Freight'||name=='TotalDue'), $$ = coalesce(toDecimal($$),toDecimal('0.0')))) ~> derivedColumn1",
 				"source1 aggregate(groupBy(AddressID = toString(byName('AddressID'))),",
 				"     {toString(byName('AddressID'))} = count(toString(byName('rowguid')))) ~> aggregate1",
-				"derivedColumn1, aggregate1 join(toString(byName('AddressID')) == toString(byName('AddressID')),",
+				"derivedColumn1, aggregate1 join(toInteger(byName('AddressID')) == toInteger(byName('AddressID')),",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",

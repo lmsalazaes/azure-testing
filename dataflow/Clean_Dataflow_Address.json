@@ -59,7 +59,7 @@
 				"     tableName: ($TableNameSink),",
 				"     insertable: false,",
 				"     updateable: false,",
-				"     deletable: true,",
+				"     deletable: false,",
 				"     upsertable: true,",
 				"     keys:(array('rowguid')),",
 				"     skipDuplicateMapInputs: true,",

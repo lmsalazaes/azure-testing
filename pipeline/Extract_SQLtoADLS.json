@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "['Address','Customer']",
+						"value": "@activity('Lookup1').output",
 						"type": "Expression"
 					},
 					"isSequential": true,

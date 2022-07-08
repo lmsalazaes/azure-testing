@@ -58,7 +58,7 @@
 				"source1 derive(each(match(type=='string'), $$ = coalesce($$,'No Data')),",
 				"          each(match(type=='timestamp'), $$ = coalesce($$,toTimestamp('1990-01-01 00:00:00.000'))),",
 				"          each(match(type=='integer'), $$ = coalesce($$,toInteger(0))),",
-				"          each(match(type=='decimal'), $$ = coalesce($$,toDecimal('0.0',10,2)))) ~> derivedColumn1",
+				"          each(match(type=='decimal'), $$ = coalesce($$,toDecimal('0.0',6,2)))) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",

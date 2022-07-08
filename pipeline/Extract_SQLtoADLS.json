@@ -131,7 +131,8 @@
 		],
 		"parameters": {
 			"CopySchema": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "SalesLT"
 			}
 		},
 		"annotations": []

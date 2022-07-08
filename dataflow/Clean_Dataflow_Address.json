@@ -59,6 +59,7 @@
 				"     updateable: false,",
 				"     deletable: false,",
 				"     upsertable: false,",
+				"     recreate: true,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     saveOrder: 1,",

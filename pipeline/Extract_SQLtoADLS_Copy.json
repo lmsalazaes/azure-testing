@@ -1,5 +1,5 @@
 {
-	"name": "Extract_SQLtoADLS",
+	"name": "Extract_SQLtoADLS_Copy",
 	"properties": {
 		"activities": [
 			{

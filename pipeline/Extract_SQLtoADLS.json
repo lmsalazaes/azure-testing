@@ -90,7 +90,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT \nTABLE_NAME \nFROM [INFORMATION_SCHEMA ].[tables] \nWHERE TABLE_SCHEMA='@{pipeline().parameters.CopySchema}'",
+							"value": "SELECT \nTABLE_NAME \nFROM [INFORMATION_SCHEMA].[tables] \nWHERE TABLE_SCHEMA='@{pipeline().parameters.CopySchema}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -98,7 +98,11 @@
 					},
 					"dataset": {
 						"referenceName": "AzureSqlTable1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Schema": "INFORMATION_SCHEMA",
+							"Table": "tables"
+						}
 					},
 					"firstRowOnly": false
 				}

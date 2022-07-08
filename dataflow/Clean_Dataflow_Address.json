@@ -25,8 +25,8 @@
 			"scriptLines": [
 				"parameters{",
 				"     FileSystemParam as string ('storage-sandbox'),",
-				"     FolderPathParam as string ('landing/vProductAndDescription'),",
-				"     FileNameParam as string ('vProductAndDescription*.parquet')",
+				"     FolderPathParam as string ('landing/vProductModelCatalogDescription'),",
+				"     FileNameParam as string ('vProductModelCatalogDescription*.parquet')",
 				"}",
 				"source(output(",
 				"          SalesOrderID as integer,",

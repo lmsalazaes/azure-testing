@@ -33,7 +33,7 @@
 				"     FileNameParam as string ('Address*.parquet'),",
 				"     SchemaNameSink as string ('CleanData'),",
 				"     TableNameSink as string ('Address'),",
-				"     ConcatColsNames as string (AddressID,AddressLine1,AddressLine2,City,CountryRegion,ModifiedDate,PostalCode,rowguid,StateProvince)",
+				"     ConcatColsNames as string ('AddressID,AddressLine1,AddressLine2,City,CountryRegion,ModifiedDate,PostalCode,rowguid,StateProvince')",
 				"}",
 				"source(output(",
 				"          SalesOrderID as integer,",

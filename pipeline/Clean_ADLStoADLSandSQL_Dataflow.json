@@ -113,10 +113,6 @@
 				"type": "string",
 				"defaultValue": "CleanData"
 			},
-			"TableNameSink": {
-				"type": "string",
-				"defaultValue": "CustomerAddress"
-			},
 			"SchemaQuery": {
 				"type": "string",
 				"defaultValue": "SalesLT"

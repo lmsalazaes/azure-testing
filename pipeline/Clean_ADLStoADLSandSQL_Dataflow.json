@@ -3,11 +3,72 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
-				"type": "ExecuteDataFlow",
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Data flow1",
+							"type": "ExecuteDataFlow",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "1.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataflow": {
+									"referenceName": "Clean_Dataflow_Address",
+									"type": "DataFlowReference",
+									"parameters": {
+										"FileSystemParam": {
+											"value": "'@{pipeline().parameters.FileSystemSource}'",
+											"type": "Expression"
+										},
+										"FolderPathParam": {
+											"value": "'@{pipeline().parameters.FolderPathSource}'",
+											"type": "Expression"
+										},
+										"FileNameParam": {
+											"value": "'@{pipeline().parameters.FileNameSource}'",
+											"type": "Expression"
+										},
+										"SchemaNameSink": {
+											"value": "'@{pipeline().parameters.SchemaNameSink}'",
+											"type": "Expression"
+										},
+										"TableNameSink": {
+											"value": "'@{pipeline().parameters.TableNameSink}'",
+											"type": "Expression"
+										}
+									}
+								},
+								"compute": {
+									"coreCount": 8,
+									"computeType": "General"
+								},
+								"traceLevel": "Fine"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
-					"timeout": "1.00:00:00",
+					"timeout": "7.00:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
@@ -15,37 +76,24 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataflow": {
-						"referenceName": "Clean_Dataflow_Address",
-						"type": "DataFlowReference",
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "SELECT \nTABLE_NAME \nFROM [INFORMATION_SCHEMA].[tables] \nWHERE TABLE_SCHEMA='@{pipeline().parameters.CopySchema}'",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference",
 						"parameters": {
-							"FileSystemParam": {
-								"value": "'@{pipeline().parameters.FileSystemSource}'",
-								"type": "Expression"
-							},
-							"FolderPathParam": {
-								"value": "'@{pipeline().parameters.FolderPathSource}'",
-								"type": "Expression"
-							},
-							"FileNameParam": {
-								"value": "'@{pipeline().parameters.FileNameSource}'",
-								"type": "Expression"
-							},
-							"SchemaNameSink": {
-								"value": "'@{pipeline().parameters.SchemaNameSink}'",
-								"type": "Expression"
-							},
-							"TableNameSink": {
-								"value": "'@{pipeline().parameters.TableNameSink}'",
-								"type": "Expression"
-							}
+							"Schema": "INFORMATION_SCHEMA",
+							"Table": "tables"
 						}
 					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"traceLevel": "Fine"
+					"firstRowOnly": false
 				}
 			}
 		],

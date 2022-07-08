@@ -21,6 +21,10 @@
 					"name": "sink1"
 				},
 				{
+					"linkedService": {
+						"referenceName": "AzureDataLakeStorage1",
+						"type": "LinkedServiceReference"
+					},
 					"name": "sink2"
 				}
 			],
@@ -75,12 +79,13 @@
 				"     errorHandlingOption: 'stopOnFirstError') ~> sink1",
 				"distinctRows sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     compressionCodec: 'snappy',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     keys:['KeySha2'],",
-				"     store: 'cache',",
-				"     format: 'inline',",
-				"     output: false,",
 				"     saveOrder: 1) ~> sink2"
 			]
 		}

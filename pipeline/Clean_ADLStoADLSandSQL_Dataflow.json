@@ -39,7 +39,7 @@
 									"type": "DataFlowReference",
 									"parameters": {
 										"FileSystemParam": {
-											"value": "'@{pipeline().parameters.FileSystemSource}'",
+											"value": "'@{pipeline().parameters.FileSystem}'",
 											"type": "Expression"
 										},
 										"FolderPathParam": {

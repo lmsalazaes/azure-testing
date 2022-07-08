@@ -17,7 +17,21 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Clean_Dataflow_Address",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"parameters": {
+							"FileSystemParam": {
+								"value": "'@{pipeline().parameters.FileSystemSource}'",
+								"type": "Expression"
+							},
+							"FolderPathParam": {
+								"value": "'@{pipeline().parameters.FolderPathSource}'",
+								"type": "Expression"
+							},
+							"FileNameParam": {
+								"value": "'@{pipeline().parameters.FileNameSource}'",
+								"type": "Expression"
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,

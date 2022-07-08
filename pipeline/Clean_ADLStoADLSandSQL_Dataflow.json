@@ -17,7 +17,23 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Clean_Dataflow_Address",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"source1": {
+								"FileSystem": {
+									"value": "@pipeline().parameters.FileSystemSink",
+									"type": "Expression"
+								},
+								"FolderPath": {
+									"value": "@pipeline().parameters.FolderPathSink",
+									"type": "Expression"
+								},
+								"FileName": {
+									"value": "@pipeline().parameters.FileNameSink",
+									"type": "Expression"
+								}
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,

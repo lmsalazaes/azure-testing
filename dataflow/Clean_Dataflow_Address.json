@@ -64,7 +64,7 @@
 				"     store: 'sqlserver',",
 				"     schemaName: ($SchemaNameSink),",
 				"     tableName: ($TableNameSink),",
-				"     insertable: true,",
+				"     insertable: false,",
 				"     updateable: false,",
 				"     deletable: false,",
 				"     upsertable: true,",

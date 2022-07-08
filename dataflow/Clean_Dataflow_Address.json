@@ -43,7 +43,6 @@
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
-				"     rowUrlColumn: 'FileName',",
 				"     format: 'parquet',",
 				"     fileSystem: ($FileSystemParam),",
 				"     compressionCodec: 'snappy',",

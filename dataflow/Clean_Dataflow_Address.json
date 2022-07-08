@@ -37,7 +37,7 @@
 				"     compressionCodec: 'snappy',",
 				"     wildcardPaths:[(concat($FolderPathParam,'/',$FileNameParam))]) ~> source1",
 				"source1 derive(each(match(type=='string'), $$ = coalesce($$,'No Data')),",
-				"          each(match(type=='timestamp'), $$ = coalesce($$,'1990-01-01 00:00:00.000')),",
+				"          each(match(type=='timestamp'), $$ = coalesce($$,toTimestamp('1990-01-01 00:00:00.000'))),",
 				"          each(match(type=='integer'), $$ = coalesce($$,0)),",
 				"          each(match(type=='decimal'), $$ = coalesce($$,0.0))) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",

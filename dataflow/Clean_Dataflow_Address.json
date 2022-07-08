@@ -29,8 +29,8 @@
 			"scriptLines": [
 				"parameters{",
 				"     FileSystemParam as string ('storage-sandbox'),",
-				"     FolderPathParam as string ('landing/SalesOrderHeader'),",
-				"     FileNameParam as string ('SalesOrderHeader*.parquet')",
+				"     FolderPathParam as string ('landing/vGetAllCategories'),",
+				"     FileNameParam as string ('vGetAllCategories*.parquet')",
 				"}",
 				"source(output(",
 				"          SalesOrderID as integer,",

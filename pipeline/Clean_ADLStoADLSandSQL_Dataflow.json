@@ -34,7 +34,7 @@
 			},
 			"FolderPathSink": {
 				"type": "string",
-				"defaultValue": "landing/Address/"
+				"defaultValue": "landing/Address"
 			},
 			"FileNameSink": {
 				"type": "string",

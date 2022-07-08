@@ -29,7 +29,7 @@
 			"scriptLines": [
 				"parameters{",
 				"     FileSystemParam as string ('storage-sandbox'),",
-				"     FolderPathParam as string ('landing/ProductModel'),",
+				"     FolderPathParam as string ('landing/ProductModelProductDescription'),",
 				"     FileNameParam as string ('ProductModel*.parquet')",
 				"}",
 				"source(allowSchemaDrift: true,",

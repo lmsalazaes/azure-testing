@@ -30,6 +30,9 @@
 				},
 				{
 					"name": "distinctRows"
+				},
+				{
+					"name": "AlterRow1"
 				}
 			],
 			"scriptLines": [
@@ -54,7 +57,8 @@
 				"          each(match(name=='Weight'||name=='SubTotal'||name=='TaxAmt'||name=='Freight'||name=='TotalDue'), $$ = coalesce(toDecimal($$),toDecimal('0.0')))) ~> derivedColumn1",
 				"derivedColumn1 aggregate(groupBy(KeySha2 = sha2(256,columns())),",
 				"     each(match(true()), $$ = first($$))) ~> distinctRows",
-				"distinctRows sink(allowSchemaDrift: true,",
+				"distinctRows alterRow(upsertIf(true())) ~> AlterRow1",
+				"AlterRow1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'table',",
 				"     store: 'sqlserver',",
@@ -63,8 +67,8 @@
 				"     insertable: true,",
 				"     updateable: false,",
 				"     deletable: false,",
-				"     upsertable: false,",
-				"     recreate: true,",
+				"     upsertable: true,",
+				"     keys:['KeySha2'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     saveOrder: 1,",

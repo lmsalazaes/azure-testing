@@ -17,7 +17,11 @@
 					"name": "sink1"
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
 			"scriptLines": [
 				"parameters{",
 				"     FileSystemParam as string,",
@@ -32,7 +36,8 @@
 				"     fileSystem: ($FileSystemParam),",
 				"     compressionCodec: 'snappy',",
 				"     wildcardPaths:[(concat($FolderPathParam,'/',$FileNameParam))]) ~> source1",
-				"source1 sink(allowSchemaDrift: true,",
+				"source1 derive(each(match(name==name&&type=='string'), $$ = coalesce($$,'Sin Valor'))) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",

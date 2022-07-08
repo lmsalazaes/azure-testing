@@ -46,7 +46,7 @@
 				"     FileNameParam as string ('Address*.parquet'),",
 				"     SchemaNameSink as string ('CleanData'),",
 				"     TableNameSink as string ('Address'),",
-				"     FolderPathParamSink as string",
+				"     FolderPathParamSink as string ('curated/Address')",
 				"}",
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",

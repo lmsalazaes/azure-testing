@@ -27,6 +27,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"FileSystemSink": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }

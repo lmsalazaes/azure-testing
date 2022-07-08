@@ -83,6 +83,10 @@
 										"FolderPath": {
 											"value": "landing/@{item()}",
 											"type": "Expression"
+										},
+										"FileName": {
+											"value": "@{item()}",
+											"type": "Expression"
 										}
 									}
 								}

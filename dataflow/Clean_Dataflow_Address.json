@@ -1,0 +1,91 @@
+{
+	"name": "Clean_Dataflow_Address",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "AzureDataLakeStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "AzureSqlDatabase1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     FileSystemParam as string ('storage-sandbox'),",
+				"     FolderPathParam as string ('landing/Address'),",
+				"     FileNameParam as string ('Address*.parquet'),",
+				"     SchemaNameSink as string ('CleanData'),",
+				"     TableNameSink as string ('Address')",
+				"}",
+				"source(output(",
+				"          SalesOrderID as integer,",
+				"          RevisionNumber as integer,",
+				"          OrderDate as timestamp,",
+				"          DueDate as timestamp,",
+				"          ShipDate as timestamp,",
+				"          Status as integer,",
+				"          OnlineOrderFlag as boolean,",
+				"          SalesOrderNumber as string,",
+				"          PurchaseOrderNumber as string,",
+				"          AccountNumber as string,",
+				"          CustomerID as integer,",
+				"          ShipToAddressID as integer,",
+				"          BillToAddressID as integer,",
+				"          ShipMethod as string,",
+				"          CreditCardApprovalCode as string,",
+				"          SubTotal as decimal(19,4),",
+				"          TaxAmt as decimal(19,4),",
+				"          Freight as decimal(19,4),",
+				"          TotalDue as decimal(19,4),",
+				"          Comment as string,",
+				"          rowguid as string,",
+				"          ModifiedDate as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: true,",
+				"     rowUrlColumn: 'FileName',",
+				"     format: 'parquet',",
+				"     fileSystem: ($FileSystemParam),",
+				"     compressionCodec: 'snappy',",
+				"     wildcardPaths:[(concat($FolderPathParam,'/',$FileNameParam))]) ~> source1",
+				"source1 derive(each(match(type=='string'), $$ = coalesce($$,'No Data')),",
+				"          each(match(type=='timestamp'), $$ = coalesce($$,toTimestamp('1990-01-01 00:00:00.000'))),",
+				"          each(match(type=='integer'), $$ = coalesce($$,toInteger(0))),",
+				"          each(match(type=='boolean'), $$ = coalesce($$,toBoolean('false'))),",
+				"          each(match(name == 'Weight' || name == 'SubTotal' || name == 'TaxAmt'  || name == 'Freight' || name == 'TotalDue'), $$ = coalesce(toDecimal($$),toDecimal('0.0')))) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table',",
+				"     store: 'sqlserver',",
+				"     schemaName: ($SchemaNameSink),",
+				"     tableName: ($TableNameSink),",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     deletable: false,",
+				"     upsertable: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+			]
+		}
+	}
+}

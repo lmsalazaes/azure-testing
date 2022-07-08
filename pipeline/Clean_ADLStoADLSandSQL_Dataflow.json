@@ -1,0 +1,76 @@
+{
+	"name": "Clean_ADLStoADLSandSQL_Dataflow",
+	"properties": {
+		"activities": [
+			{
+				"name": "Data flow1",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Clean_Dataflow_Address",
+						"type": "DataFlowReference",
+						"parameters": {
+							"FileSystemParam": {
+								"value": "'@{pipeline().parameters.FileSystemSource}'",
+								"type": "Expression"
+							},
+							"FolderPathParam": {
+								"value": "'@{pipeline().parameters.FolderPathSource}'",
+								"type": "Expression"
+							},
+							"FileNameParam": {
+								"value": "'@{pipeline().parameters.FileNameSource}'",
+								"type": "Expression"
+							},
+							"SchemaNameSink": {
+								"value": "'@{pipeline().parameters.SchemaNameSink}'",
+								"type": "Expression"
+							},
+							"TableNameSink": {
+								"value": "'@{pipeline().parameters.TableNameSink}'",
+								"type": "Expression"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"parameters": {
+			"FileSystemSource": {
+				"type": "string",
+				"defaultValue": "storage-sandbox"
+			},
+			"FolderPathSource": {
+				"type": "string",
+				"defaultValue": "landing/CustomerAddress"
+			},
+			"FileNameSource": {
+				"type": "string",
+				"defaultValue": "CustomerAddress*.parquet"
+			},
+			"SchemaNameSink": {
+				"type": "string",
+				"defaultValue": "CleanData"
+			},
+			"TableNameSink": {
+				"type": "string",
+				"defaultValue": "CustomerAddress"
+			}
+		},
+		"annotations": []
+	}
+}

@@ -82,7 +82,7 @@
 				"     validateSchema: false,",
 				"     format: 'parquet',",
 				"     fileSystem: ($FileSystemParam),",
-				"     folderPath: (concat($FolderPathParamSink,'/',toString(currentUTC('America/Mexico_City')))),",
+				"     folderPath: (concat($FolderPathParamSink,'/',toString(fromUTC(currentUTC(),'America/Mexico_City')))),",
 				"     compressionCodec: 'snappy',",
 				"     umask: 0022,",
 				"     preCommands: [],",

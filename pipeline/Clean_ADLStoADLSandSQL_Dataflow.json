@@ -117,7 +117,7 @@
 				"type": "string",
 				"defaultValue": "CustomerAddress"
 			},
-			"SourceSchema": {
+			"SchemaQuery": {
 				"type": "string",
 				"defaultValue": "SalesLT"
 			}

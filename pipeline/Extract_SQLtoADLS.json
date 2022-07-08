@@ -85,7 +85,7 @@
 											"type": "Expression"
 										},
 										"FileName": {
-											"value": "@{item()}",
+											"value": "@{item()['TABLE_NAME']}",
 											"type": "Expression"
 										}
 									}

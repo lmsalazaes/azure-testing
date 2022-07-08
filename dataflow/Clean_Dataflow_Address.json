@@ -26,7 +26,7 @@
 					"name": "derivedColumn1"
 				},
 				{
-					"name": "AlterRow1"
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -50,8 +50,9 @@
 				"          each(match(type=='integer'), $$ = coalesce($$,toInteger(0))),",
 				"          each(match(type=='boolean'), $$ = coalesce($$,toBoolean('false'))),",
 				"          each(match(name=='Weight'||name=='SubTotal'||name=='TaxAmt'||name=='Freight'||name=='TotalDue'), $$ = coalesce(toDecimal($$),toDecimal('0.0')))) ~> derivedColumn1",
-				"derivedColumn1 alterRow(upsertIf(true())) ~> AlterRow1",
-				"AlterRow1 sink(allowSchemaDrift: true,",
+				"source1 aggregate(groupBy(rowguid = toString(byName('rowguid'))),",
+				"     CountRow = count(toString(byName('rowguid')))) ~> aggregate1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'table',",
 				"     store: 'sqlserver',",

@@ -30,7 +30,7 @@
 				"parameters{",
 				"     FileSystemParam as string ('storage-sandbox'),",
 				"     FolderPathParam as string ('landing/Product'),",
-				"     FileNameParam as string ('Product*.parquet')",
+				"     FileNameParam as string ('ProductCategory*.parquet')",
 				"}",
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",

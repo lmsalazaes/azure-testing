@@ -126,7 +126,8 @@
 				"defaultValue": "CustomerAddress"
 			},
 			"SourceSchema": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "SalesLT"
 			}
 		},
 		"annotations": []

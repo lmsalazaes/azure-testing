@@ -61,7 +61,17 @@
 							"inputs": [
 								{
 									"referenceName": "AzureSqlTable1",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"Schema": {
+											"value": "@pipeline().parameters.CopySchema",
+											"type": "Expression"
+										},
+										"Table": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [

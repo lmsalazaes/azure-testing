@@ -51,7 +51,7 @@
 				"          each(match(type=='boolean'), $$ = coalesce($$,toBoolean('false'))),",
 				"          each(match(name=='Weight'||name=='SubTotal'||name=='TaxAmt'||name=='Freight'||name=='TotalDue'), $$ = coalesce(toDecimal($$),toDecimal('0.0'))),",
 				"          KeySha2 = sha2(256,columns())) ~> derivedColumn1",
-				"derivedColumn1 aggregate(groupBy(mycols = sha2(256,columns())),",
+				"derivedColumn1 aggregate(groupBy(KeySha2),",
 				"     each(match(true()), $$ = first($$))) ~> distinctRows",
 				"distinctRows sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",

@@ -5,9 +5,9 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "Parquet1",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "AzureDataLakeStorage1",
+						"type": "LinkedServiceReference"
 					},
 					"name": "source1"
 				}
@@ -19,10 +19,17 @@
 			],
 			"transformations": [],
 			"scriptLines": [
+				"parameters{",
+				"     FileSystemParam as string,",
+				"     FolderPathParam as string,",
+				"     FileNameParam as string",
+				"}",
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     format: 'parquet') ~> source1",
+				"     format: 'parquet',",
+				"     fileSystem: ($FileSystemParam),",
+				"     wildcardPaths:[(concat($FolderPathParam,$FileNameParam))]) ~> source1",
 				"source1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",

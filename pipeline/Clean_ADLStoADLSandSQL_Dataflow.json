@@ -86,7 +86,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT \nTABLE_NAME \nFROM [INFORMATION_SCHEMA].[tables] \nWHERE TABLE_SCHEMA='@{pipeline().parameters.SchemaQuery}'",
+							"value": "SELECT \nTABLE_NAME,\nSTRING_AGG (CONVERT(NVARCHAR(max),COLUMN_NAME), ',') AS CONCAT_COLS_NAMES\nFROM INFORMATION_SCHEMA.COLUMNS\nWHERE TABLE_SCHEMA = '@{pipeline().parameters.SchemaQuery}'\nGROUP BY TABLE_NAME",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",

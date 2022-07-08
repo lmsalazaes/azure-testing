@@ -56,11 +56,11 @@
 			},
 			"FolderPathSource": {
 				"type": "string",
-				"defaultValue": "landing/Address"
+				"defaultValue": "landing/Customer"
 			},
 			"FileNameSource": {
 				"type": "string",
-				"defaultValue": "Address*.parquet"
+				"defaultValue": "Customer*.parquet"
 			},
 			"SchemaNameSink": {
 				"type": "string",
@@ -68,7 +68,7 @@
 			},
 			"TableNameSink": {
 				"type": "string",
-				"defaultValue": "Address"
+				"defaultValue": "Customer"
 			}
 		},
 		"annotations": []

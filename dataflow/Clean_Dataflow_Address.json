@@ -24,9 +24,6 @@
 			"transformations": [
 				{
 					"name": "derivedColumn1"
-				},
-				{
-					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -50,8 +47,6 @@
 				"          each(match(type=='integer'), $$ = coalesce($$,toInteger(0))),",
 				"          each(match(type=='boolean'), $$ = coalesce($$,toBoolean('false'))),",
 				"          each(match(name=='Weight'||name=='SubTotal'||name=='TaxAmt'||name=='Freight'||name=='TotalDue'), $$ = coalesce(toDecimal($$),toDecimal('0.0')))) ~> derivedColumn1",
-				"source1 aggregate(groupBy(AddressID = toString(byName('AddressID'))),",
-				"     {toString(byName('AddressID'))} = count(toString(byName('rowguid')))) ~> aggregate1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'table',",

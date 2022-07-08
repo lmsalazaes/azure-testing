@@ -85,7 +85,7 @@
 											"type": "Expression"
 										},
 										"FileName": {
-											"value": "@{item()['TABLE_NAME']}",
+											"value": "@{item()['TABLE_NAME']}-@{convertFromUtc(utcNow(), 'Central Standard Time')}.parquet",
 											"type": "Expression"
 										}
 									}

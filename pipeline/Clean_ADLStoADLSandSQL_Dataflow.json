@@ -57,10 +57,6 @@
 										"TableNameSink": {
 											"value": "'@{item()['TABLE_NAME']}'",
 											"type": "Expression"
-										},
-										"ConcatColsNames": {
-											"value": "'@{item()['CONCAT_COLS_NAMES']}'",
-											"type": "Expression"
 										}
 									}
 								},

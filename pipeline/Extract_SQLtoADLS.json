@@ -106,7 +106,10 @@
 							"userProperties": [],
 							"typeProperties": {
 								"variableName": "testvar",
-								"value": "@item()"
+								"value": {
+									"value": "@item()['value']",
+									"type": "Expression"
+								}
 							}
 						}
 					]

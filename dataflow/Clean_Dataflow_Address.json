@@ -25,7 +25,7 @@
 			"scriptLines": [
 				"parameters{",
 				"     FileSystemParam as string ('storage-sandbox'),",
-				"     FolderPathParam as string ('landing/vGetAllCategories'),",
+				"     FolderPathParam as string ('landing/vProductAndDescription'),",
 				"     FileNameParam as string ('vProductAndDescription*.parquet')",
 				"}",
 				"source(output(",

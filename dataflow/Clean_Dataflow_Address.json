@@ -61,7 +61,7 @@
 				"     updateable: false,",
 				"     deletable: false,",
 				"     upsertable: true,",
-				"     keys:[('rowguid')],",
+				"     keys:(array('rowguid')),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     saveOrder: 1,",

@@ -1,5 +1,5 @@
 {
-	"name": "Clean_Dataflow_Address",
+	"name": "Clean_Dataflow",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

@@ -35,7 +35,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "Clean_Dataflow_Address",
+									"referenceName": "Clean_Dataflow",
 									"type": "DataFlowReference",
 									"parameters": {
 										"FileSystemParam": {

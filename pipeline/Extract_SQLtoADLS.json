@@ -77,7 +77,14 @@
 							"outputs": [
 								{
 									"referenceName": "Parquet1",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"FileSystem": "storage-sandbox",
+										"FolderPath": {
+											"value": "landing/@{item()}",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}

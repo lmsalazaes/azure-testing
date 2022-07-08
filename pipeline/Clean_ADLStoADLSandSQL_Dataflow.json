@@ -30,6 +30,9 @@
 		"parameters": {
 			"FileSystemSink": {
 				"type": "string"
+			},
+			"FolderPathSink": {
+				"type": "string"
 			}
 		},
 		"annotations": []

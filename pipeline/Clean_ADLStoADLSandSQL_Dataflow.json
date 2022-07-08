@@ -33,6 +33,9 @@
 			},
 			"FolderPathSink": {
 				"type": "string"
+			},
+			"FileNameSink": {
+				"type": "string"
 			}
 		},
 		"annotations": []

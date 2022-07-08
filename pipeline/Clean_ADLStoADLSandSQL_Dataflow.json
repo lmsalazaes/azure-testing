@@ -28,15 +28,15 @@
 			}
 		],
 		"parameters": {
-			"FileSystemSink": {
+			"FileSystemSource": {
 				"type": "string",
 				"defaultValue": "storage-sandbox"
 			},
-			"FolderPathSink": {
+			"FolderPathSource": {
 				"type": "string",
 				"defaultValue": "landing/Address"
 			},
-			"FileNameSink": {
+			"FileNameSource": {
 				"type": "string",
 				"defaultValue": "Address*.parquet"
 			}

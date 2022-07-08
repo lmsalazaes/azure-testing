@@ -56,7 +56,7 @@
 				"source1 aggregate(groupBy(rowguid = toString(byName('rowguid'))),",
 				"     CountRow = count(toString(byName('rowguid')))) ~> aggregate1",
 				"derivedColumn1, aggregate1 join(toString(byName('rowguid')) == toString(byName('rowguid')),",
-				"     joinType:'right',",
+				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",

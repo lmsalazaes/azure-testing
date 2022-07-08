@@ -53,6 +53,12 @@
 			"FileNameSource": {
 				"type": "string",
 				"defaultValue": "Address*.parquet"
+			},
+			"SchemaNameSink": {
+				"type": "string"
+			},
+			"TableNameSink": {
+				"type": "string"
 			}
 		},
 		"annotations": []

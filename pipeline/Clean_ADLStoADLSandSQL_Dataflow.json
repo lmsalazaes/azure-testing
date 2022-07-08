@@ -55,10 +55,12 @@
 				"defaultValue": "Address*.parquet"
 			},
 			"SchemaNameSink": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "CleanData"
 			},
 			"TableNameSink": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Address"
 			}
 		},
 		"annotations": []

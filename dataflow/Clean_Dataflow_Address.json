@@ -24,6 +24,9 @@
 			"transformations": [
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "distinctRows"
 				}
 			],
 			"scriptLines": [
@@ -47,7 +50,9 @@
 				"          each(match(type=='integer'), $$ = coalesce($$,toInteger(0))),",
 				"          each(match(type=='boolean'), $$ = coalesce($$,toBoolean('false'))),",
 				"          each(match(name=='Weight'||name=='SubTotal'||name=='TaxAmt'||name=='Freight'||name=='TotalDue'), $$ = coalesce(toDecimal($$),toDecimal('0.0')))) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"derivedColumn1 aggregate(groupBy(mycols = sha2(256,columns())),",
+				"     each(match(true()), $$ = first($$))) ~> distinctRows",
+				"distinctRows sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'table',",
 				"     store: 'sqlserver',",

@@ -80,6 +80,7 @@
 				"distinctRows sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
+				"     fileSystem: ($FileSystemParam),",
 				"     compressionCodec: 'snappy',",
 				"     umask: 0022,",
 				"     preCommands: [],",
